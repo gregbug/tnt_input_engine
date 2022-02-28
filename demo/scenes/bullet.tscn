@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://demo/assets/bullet.png" type="Texture" id=1]
+[ext_resource path="res://demo/scenes/code/bullet.gd" type="Script" id=2]
+
+[node name="Bullet" type="Node2D"]
+light_mask = 0
+scale = Vector2( 0.1, 0.1 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+light_mask = 0
+scale = Vector2( 3, 3 )
+texture = ExtResource( 1 )
+centered = false
+offset = Vector2( -130, -30 )
+region_rect = Rect2( 265, 261, 63, 160 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 27.9353, 0.153496 )
+scale = Vector2( 1.71629, 2.70374 )
+rect = Rect2( -90, -10, 90, 20 )
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

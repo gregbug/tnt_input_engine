@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://addons/tnt_input_engine/virtual_joy_componets/parent/tnt_virtual_joypad.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/tnt_input_engine/code/components/tnt_virtual_dpad.gd" type="Script" id=2]
+[ext_resource path="res://addons/tnt_input_engine/assets/virtual_joy/virtual_pad.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 2.72099, 101.78, 90.7325, 89.5473 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 117.466, 90.5734, 33.3052, 31.8027 )
+
+[node name="TNT_Virtual_Dpad" instance=ExtResource( 1 )]
+margin_right = 90.0
+margin_bottom = 90.0
+rect_scale = Vector2( 2, 2 )
+script = ExtResource( 2 )
+vector_mode = 1
+
+[node name="Texture_1" parent="." index="0"]
+margin_right = 90.0
+margin_bottom = 89.0
+texture = SubResource( 1 )
+
+[node name="Texture_2" parent="Texture_1" index="0"]
+visible = true
+margin_left = 28.4851
+margin_top = 30.6721
+margin_right = 61.4851
+margin_bottom = 62.6721
+texture = SubResource( 2 )

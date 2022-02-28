@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://addons/tnt_input_engine/code/parent/tnt_virtual_joypad.gd" type="Script" id=1]
+
+[node name="TNT_Virtual_JoyPad" type="Control" groups=["tnt_input_vpad"]]
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture_1" type="TextureRect" parent="."]
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Texture_2" type="TextureRect" parent="Texture_1"]
+visible = false
+light_mask = 0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

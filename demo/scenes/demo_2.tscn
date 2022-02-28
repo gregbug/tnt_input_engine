@@ -1,0 +1,134 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://addons/tnt_input_engine/virtual_joy_componets/tnt_input_engine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/tnt_input_engine/virtual_joy_componets/tnt_virtual_joy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://addons/tnt_input_engine/virtual_joy_componets/tnt_virtual_button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://demo/assets/back.jpg" type="Texture" id=4]
+[ext_resource path="res://demo/assets/ship.png" type="Texture" id=5]
+[ext_resource path="res://demo/scenes/code/ship.gd" type="Script" id=6]
+[ext_resource path="res://demo/scenes/code/demo_2.gd" type="Script" id=7]
+
+[node name="demo_2" type="Node"]
+script = ExtResource( 7 )
+
+[node name="Back" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Ship" type="KinematicBody2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="SpriteShip" type="Sprite" parent="Ship"]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="fire1_pos" type="Position2D" parent="Ship/SpriteShip"]
+position = Vector2( 33, -3.24249e-05 )
+
+[node name="fire2_pos" type="Position2D" parent="Ship/SpriteShip"]
+position = Vector2( 24.3333, -8.6667 )
+
+[node name="fire3_pos" type="Position2D" parent="Ship/SpriteShip"]
+position = Vector2( 24.3333, 8.3333 )
+
+[node name="UserInput" type="Node" parent="."]
+
+[node name="TNT_Input_Engine" parent="UserInput" instance=ExtResource( 1 )]
+"VirtualJoy Visibility/Mode" = 0
+
+[node name="TNT_Virtual_Button" parent="UserInput/TNT_Input_Engine" instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -202.0
+margin_top = -106.0
+margin_right = -112.0
+margin_bottom = -16.0
+_color = Color( 0.952941, 0.164706, 0.164706, 1 )
+_pressed_color = Color( 0.592157, 0.0784314, 0.0784314, 1 )
+hw_joy_map_binding = 1
+
+[node name="TNT_Virtual_Button2" parent="UserInput/TNT_Input_Engine" instance=ExtResource( 3 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -114.0
+margin_top = -170.0
+margin_right = -24.0
+margin_bottom = -80.0
+_color = Color( 0.0980392, 0.376471, 0.960784, 1 )
+_pressed_color = Color( 0.109804, 0.219608, 0.654902, 1 )
+hw_joy_map_binding = 2
+
+[node name="TNT_Virtual_Joy" parent="UserInput/TNT_Input_Engine" instance=ExtResource( 2 )]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 24.0
+margin_top = -174.0
+margin_right = 174.0
+margin_bottom = -24.0
+clamp_zone = 2.0
+hw_joy_map = 1
+
+[node name="HUD" type="Node" parent="."]
+
+[node name="Container" type="Control" parent="HUD"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="HUD/Container"]
+margin_right = 288.0
+margin_bottom = 133.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lblInfo" type="Label" parent="HUD/Container/GridContainer"]
+margin_right = 254.0
+margin_bottom = 133.0
+text = "TO MOVE:
+   - Use arrows keys (if avaible)
+   - Use virtual joystick (if avaible)
+   - Use Hardware joypad (if avaible)
+
+TO FIRE:
+   - Key 1, Virtual Button, Joy Button A
+   - Key 2, Virtual Button, Joy Button B    "
+
+[node name="lblTNT" type="Label" parent="HUD/Container"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -14.0
+rect_min_size = Vector2( 0, 26 )
+text = "TNT Input Engine v1.00"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -80.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 60 )
+size_flags_vertical = 8
+text = "  NEXT >  "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="HUD/Button" to="." method="_on_Button_pressed"]
